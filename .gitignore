@@ -1,0 +1,29 @@
+# Environnement virtuel
+venv/
+env/
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+
+# Fichiers temporaires
+*.log
+*.pot
+*.pyc
+*.sqlite3
+
+# Variables d'environnement
+.env
+*.env
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# Dossier de configuration IDE
+.vscode/
+.idea/
+
+# Fichiers statiques générés
+staticfiles/
+media/
