@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription</title>
+  <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+<body class="register-body">
+  <div class="register-container">
+    <h2 class="register-title">Créer un compte</h2>
+
+    <form method="post" class="register-form">
+      {% csrf_token %}
+      <div class="input-group">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+      </div>
+      <div class="input-group">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+      </div>
+      <div class="input-group">
+        {{ form.password1.label_tag }}
+        {{ form.password1 }}
+      </div>
+      <div class="input-group">
+        {{ form.password2.label_tag }}
+        {{ form.password2 }}
+      </div>
+
+      <div class="form-errors">
+        {{ form.errors }}
+      </div>
+
+      <input type="submit" value="S'inscrire" class="btn-register">
+    </form>
+
+    <p class="login-link">
+      Déjà un compte ? <a href="{% url 'login' %}">Se connecter</a>
+    </p>
+  </div>
+</body>
+</html>

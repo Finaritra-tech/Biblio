@@ -1,0 +1,187 @@
+/* ------------------------------
+   Style global
+------------------------------ */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+/* ------------------------------
+   Header / Navbar
+------------------------------ */
+.site-header {
+  background-color: #1e293b; /* Bleu foncé */
+  color: white;
+  padding: 0.75rem 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.brand {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #f8fafc;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #e2e8f0;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.nav-links a:hover {
+  background-color: #334155;
+}
+
+/* ------------------------------
+   Layout principal (Sidebar + Contenu)
+------------------------------ */
+main.container {
+  display: flex;
+  flex-direction: row;
+  min-height: calc(100vh - 70px); /* Hauteur totale - hauteur du header */
+}
+
+/* ------------------------------
+   Sidebar
+------------------------------ */
+.sidebar {
+  width: 220px;
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 1rem;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 0.5rem;
+}
+
+.sidebar-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-links li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar-links a {
+  display: block;
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 0.6rem 0.8rem;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.sidebar-links a:hover {
+  background-color: #334155;
+  color: #fff;
+}
+
+/* ------------------------------
+   Contenu principal
+------------------------------ */
+main .content {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f8fafc;
+}
+
+main .content h1 {
+  margin-top: 0;
+}
+
+
+.messages {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 9999;
+}
+
+.messages .message {
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  min-width: 200px;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeInOut 4s forwards;
+}
+
+/* Couleurs selon le type de message */
+.messages .error { background-color: #e74c3c; }   /* rouge */
+.messages .success { background-color: #27ae60; } /* vert */
+.messages .info { background-color: #2980b9; }    /* bleu */
+
+/* Animation : apparition puis disparition */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -60%); }
+  10% { opacity: 1; transform: translate(-50%, -50%); }
+  90% { opacity: 1; transform: translate(-50%, -50%); }
+  100% { opacity: 0; transform: translate(-50%, -40%); }
+}
+.search-container{
+  display: flex;
+  gap: 1px;
+}
+.search-input{
+  width: 400px;
+  height: 40px;
+  border-radius: 50px;
+}
+.search-button{
+  background-color: transparent;
+  width: 30px;
+}
+
+.site-footer {
+  background-color: #1e293b;
+  color: #cbd5e1;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+}
+button{
+    border: none;
+    color: #ccc;
+  }
+
+

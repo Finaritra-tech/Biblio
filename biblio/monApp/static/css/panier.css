@@ -1,0 +1,142 @@
+
+.panier-section {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+}
+button{
+    border: none;
+    color: white;
+}
+.panier-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.panier-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.panier-table th {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.panier-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.panier-table tr:hover {
+  background-color: #f9f9f9;
+  transition: 0.2s ease;
+}
+
+/* --- Formulaire de quantité --- */
+.quantite-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.input-quantite {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* --- Boutons --- */
+.btn {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn-modifier {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+.btn-modifier:hover {
+  background-color: #138496;
+}
+
+.btn-supprimer {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-supprimer:hover {
+  background-color: #b52a37;
+}
+
+.btn-valider {
+  background-color: #28a745;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;
+}
+
+.btn-valider:hover {
+  background-color: #1e7e34;
+}
+
+/* --- Total du panier --- */
+.total-panier {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.total-panier h3 {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.total-panier span {
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* --- Panier vide --- */
+.panier-vide {
+  text-align: center;
+  color: #777;
+  font-size: 1.1rem;
+  margin-top: 40px;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .quantite-form {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .total-panier {
+    text-align: center;
+  }
+}

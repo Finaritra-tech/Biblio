@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mon Panier{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/panier.css' %}">
+<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="panier-section">
+    <h1 class="panier-title"><i class="fas fa-eye"></i> Mon Panier</h1>
+
+    {% if articles %}
+        <div class="table-wrapper">
+            <table class="panier-table">
+                <thead>
+                    <tr>
+                        <th>Livre</th>
+                        <th>Auteur</th>
+                        <th>Prix Unitaire</th>
+                        <th>Quantité</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                    <tr>
+                        <td class="livre-titre">{{ article.livre.titre }}</td>
+                        <td>{{ article.livre.auteur }}</td>
+                        <td>{{ article.livre.prix }} Ar</td>
+                        <td>
+                            <form method="post" action="{% url 'modifier_quantite_panier' article.id %}" class="quantite-form">
+                                {% csrf_token %}
+                                <input type="number" name="quantite" value="{{ article.quantite }}" min="1" required class="input-quantite">
+                                <button type="submit" class="btn btn-modifier">Modifier</button>
+                            </form>
+                        </td>
+                        <td>{{ article.total }} Ar</td>
+                        <td>
+                            <form method="post" action="{% url 'supprimer_article_panier' article.id %}" class="supprimer-form">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-supprimer">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="total-panier">
+            <h3>Total Panier : <span>{{ total }} Ar</span></h3>
+            <button class="btn btn-valider" >Valider la commande</button>
+        </div>
+
+    {% else %}
+        <p class="panier-vide">Votre panier est vide.</p>
+    {% endif %}
+</section>
+{% endblock %}

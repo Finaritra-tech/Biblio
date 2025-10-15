@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titile %}Livres{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/modal.css' %}">
+<link rel="stylesheet" href="{% static 'css/pagination.css' %}">
+<link rel="stylesheet" href="{% static 'css/carte.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<section class="livres-section">
+   <h1>Nos Livres</h1>
+    <ul class="carte-liste">
+    {% for livre in livres %}
+        <li class="carte-item">
+            <div class="carte-contenu">
+                <strong>{{ livre.titre }}</strong> - {{ livre.auteur }} 
+                ({{ livre.prix }} Ar)
+                {% if livre.couverture %}
+                    <br><img src="{{ livre.couverture.url }}" alt="Couverture de {{ livre.titre }}" class="carte-image">
+                    <strong>Disponible:</strong><span>{{ livre.stock }} </span>
+                {% endif %}
+            </div>
+            <span class="ouvrirPopup" data-nom="{{ livre.description }}" data-id="{{ livre.id }}">Ajouter dans le panier</span> 
+        </li>
+    {% endfor %}
+</ul>
+
+<div class="pagination-modern">
+  {% if livres.has_previous %}
+    <a href="?page={{ livres.previous_page_number }}" class="page-btn prev">&laquo;</a>
+  {% else %}
+    <span class="page-btn disabled">&laquo;</span>
+  {% endif %}
+
+  {% for num in livres.paginator.page_range %}
+    {% if livres.number == num %}
+      <span class="page-btn current">{{ num }}</span>
+    {% elif num > livres.number|add:'-3' and num < livres.number|add:'3' %}
+      <a href="?page={{ num }}" class="page-btn">{{ num }}</a>
+    {% endif %}
+  {% endfor %}
+
+  {% if livres.has_next %}
+    <a href="?page={{ livres.next_page_number }}" class="page-btn next">&raquo;</a>
+  {% else %}
+    <span class="page-btn disabled">&raquo;</span>
+  {% endif %}
+</div>
+
+
+</section>
+
+<div class="overlay" id="popupOverlay">
+  <div class="popup">
+    <span class="close-btn" id="fermerPopup">&times;</span>
+    <h2>Formulaire</h2>
+    <form id="formPopup" method="post" action="{% url 'ajouter_panier' livre_id=0 %}">
+      {% csrf_token %}
+      <input type="hidden" id="livreIdInput" name="livre_id">
+      <span><strong>Description:</strong><p id="nomInput"></p></span>
+      <label for="">Combien ?</label>  
+      <input type="number" placeholder="" value="1" name="quantite" required>
+      <button type="submit">Ajouter dans le panier</button>
+    </form>
+  </div>
+
+  {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>
+
+{% block extra_js %}
+<script src="{% static 'js/modal.js' %}"></script>
+{% endblock %}
+{% endblock %}

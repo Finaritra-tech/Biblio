@@ -1,0 +1,110 @@
+/* --- Structure globale --- */
+.register-body {
+  background: linear-gradient(135deg, #00c6ff, #007bff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+/* --- Conteneur du formulaire --- */
+.register-container {
+  background: #fff;
+  padding: 40px 35px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+}
+
+/* --- Titre --- */
+.register-title {
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* --- Champs de saisie --- */
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+  outline: none;
+}
+
+/* --- Bouton d'inscription --- */
+.btn-register {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-register:hover {
+  background-color: #0056b3;
+}
+
+/* --- Erreurs du formulaire --- */
+.form-errors {
+  color: #dc3545;
+  font-size: 0.95rem;
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* --- Lien vers la connexion --- */
+.login-link {
+  margin-top: 25px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.login-link a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .register-container {
+    padding: 30px 20px;
+  }
+
+  .register-title {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mon Profil{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profil.css' %}">
+<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<section class="profil-section">
+  <h2>Mon Profil</h2>
+
+  <form method="POST" action="{% url 'modifier_profil' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="profil-contenu">
+      <div style="text-align:center;">
+        <img id="preview-photo" src="{{ profil.photo.url }}" alt="Photo de profil" class="profil-photo">
+        <input type="file" name="photo" id="photo-input" accept="image/*" style="display:none;">
+      </div>
+
+      <p><strong>Nom d’utilisateur :</strong>
+        <span class="editable" data-name="username">{{ request.user.username }}</span>
+      </p>
+
+      <p><strong>Email :</strong>
+        <span class="editable" data-name="email">{{ profil.user.email }}</span>
+      </p>
+
+      <p><strong>Date d’inscription :</strong>
+        <span>{{ profil.user.date_joined|date:"d/m/Y" }}</span>
+      </p>
+
+      <button type="button" id="edit-btn" class="edit-btn">Modifier le profil <i class="fas fa-pen"></i></button>
+      <button type="submit" id="save-btn" class="edit-btn" style="display:none;">Enregistrer les modifications</button>
+    </div>
+  </form>
+</section>
+
+<script>
+  const editBtn = document.getElementById("edit-btn");
+  const saveBtn = document.getElementById("save-btn");
+  const photoInput = document.getElementById("photo-input");
+  const previewPhoto = document.getElementById("preview-photo");
+
+  editBtn.addEventListener("click", function() {
+    const spans = document.querySelectorAll(".editable");
+    spans.forEach(span => {
+      const value = span.textContent.trim();
+      const input = document.createElement("input");
+      input.type = "text";
+      input.name = span.dataset.name;
+      input.value = value;
+      input.className = "profile-input";
+      span.replaceWith(input);
+    });
+
+    photoInput.style.display = "block";
+
+    editBtn.style.display = "none";
+    saveBtn.style.display = "inline-block";
+  });
+
+  
+  photoInput.addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        previewPhoto.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+</script>
+{% endblock %}

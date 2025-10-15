@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentification</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body class="login-body">
+    <div class="login-container">
+        <h1 class="login-title">Connexion</h1>
+        <form method="post" class="login-form">
+            {% csrf_token %}
+            <div class="input-group">
+                <input type="text" name="username" placeholder="Votre nom" required>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" placeholder="Mot de passe" required>
+            </div>
+            <input type="submit" value="Se connecter" class="btn-login">            
+        </form>
+
+        <div class="messages">
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+
+        <p class="register-link">
+            Pas encore de compte ? <a href="{% url 'register' %}">S'inscrire</a>
+        </p>
+    </div>
+</body>
+</html>
